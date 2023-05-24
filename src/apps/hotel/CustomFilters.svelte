@@ -1,16 +1,16 @@
 <hbox>
   <button><PiggyBankOutline size={32}/>Price</button>
-  <button><StarShootingOutline size={32} />Stars</button>
+  <button><StarOutline size={32} />Stars</button>
   <button><CarBrakeParking size={32} />Parking</button>
-  <button><PlayListStar size={32} />Ratings</button>
+  <button><StarShootingOutline size={32} />Ratings</button>
   <button><CoffeeOutline size={32} />Breakfast</button>
 </hbox>
 
 <script lang="ts">
   import PiggyBankOutline from "svelte-material-icons/PiggyBankOutline.svelte";
-  import StarShootingOutline from "svelte-material-icons/StarShootingOutline.svelte";
+  import StarOutline from "svelte-material-icons/StarOutline.svelte";
   import CarBrakeParking from "svelte-material-icons/CarBrakeParking.svelte";
-  import PlayListStar from "svelte-material-icons/PlayListStar.svelte";
+  import StarShootingOutline from "svelte-material-icons/StarShootingOutline.svelte";
   import CoffeeOutline from "svelte-material-icons/CoffeeOutline.svelte";
 </script>
 
