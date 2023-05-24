@@ -1,5 +1,7 @@
 <main>
-  <h1>Hotel App</h1>
+  <h2>Hotels <span>in <u>Madrid</u></span></h2>
+  <MainFilterBar />
+  
   <div class="prompt">
     <Prompt>
       Parula, ich brauche deine Hilfe!
@@ -9,6 +11,7 @@
 
 <script lang="ts">
   import Prompt from "./Prompt.svelte";
+  import MainFilterBar from "./MainFilterBar.svelte";
 </script>
 
 <style>
@@ -22,5 +25,9 @@
     right: 2rem;
     max-width: 560px;
     margin-inline: auto;
+  }
+
+  h2 span {
+    font-weight: 300;
   }
 </style>
