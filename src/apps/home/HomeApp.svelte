@@ -1,10 +1,9 @@
 <main>
-  <h1>Home App</h1>
-  <hbox>
+  <grid>
     {#each mockedData as item (item.id)}
       <Card src={item.src} alt={item.alt} prompt={item.prompt} />
     {/each}
-  </hbox>
+  </grid>
 </main>
 
 <script lang="ts">
@@ -13,8 +12,17 @@
 </script>
 
 <style>
-  hbox   {
-    flex-wrap: wrap;
+  grid   {
+    --cols: auto-fit;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 200px);
     gap: 1rem;
+    justify-content: center;
   }
+  @media (width >= 880px) {
+    grid {
+      --cols: 4;
+    }
+  }
+
 </style>
