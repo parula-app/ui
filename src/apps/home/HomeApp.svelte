@@ -12,6 +12,9 @@
 </script>
 
 <style>
+  main {
+    padding: 4rem;
+  }
   grid   {
     --cols: auto-fit;
     display: grid;
