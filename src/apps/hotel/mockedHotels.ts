@@ -5,9 +5,10 @@ export const mockedHotels = [
     address: "Address 1",
     city: "City 1",
     country: "Country 1",
-    stars: 1,
+    stars: 4.3,
     price: 100,
-    image: "/assets/images/hotel.png",
+    image: "https://picsum.photos/200/300",
+    features: ["Free Wifi", "Breakfast", "Air Conditioner", "Restaurant"],
   },
   {
     id: 2,
@@ -15,9 +16,10 @@ export const mockedHotels = [
     address: "Address 2",
     city: "City 2",
     country: "Country 2",
-    stars: 2,
+    stars: 4.7,
     price: 200,
-    image: "/assets/images/hotel.png",
+    image: "https://picsum.photos/200/300",
+    features: ["Free Wifi", "Breakfast", "Air Conditioner", "Restaurant"],
   },
   {
     id: 3,
@@ -25,8 +27,9 @@ export const mockedHotels = [
     address: "Address 3",
     city: "City 3",
     country: "Country 3",
-    stars: 3,
+    stars: 3.9,
     price: 300,
-    image: "/assets/images/hotel.png",
-  }
+    image: "https://picsum.photos/200/300",
+    features: ["Free Wifi", "Breakfast", "Air Conditioner", "Restaurant"],
+  },
 ];

@@ -4,6 +4,8 @@
 
 <style>
   div {
+    position: sticky;
+    top: 1rem;
     min-width: 320px;
     height: 480px;
     background: #fbfbfb;

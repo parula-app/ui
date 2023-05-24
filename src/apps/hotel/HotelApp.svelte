@@ -7,7 +7,7 @@
   </vbox>
   <div class="prompt">
     <Prompt>
-      Parula, ich brauche deine Hilfe!
+      Parula, I need your help!
     </Prompt>
   </div>
 </main>

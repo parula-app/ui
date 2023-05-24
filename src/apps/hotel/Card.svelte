@@ -1,13 +1,16 @@
 <vbox>
-  <slot />
+  <CardHeader {hotel} on:toggle={() => {expanded = !expanded}}/> 
   {#if expanded}
-    <slot name="details" />
+    <div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quod, non ut expedita dicta saepe? Reiciendis, quas amet id ipsum accusantium eligendi fugit, perspiciatis recusandae quibusdam eos incidunt! Minima, a!</p>
+    </div>
   {/if}
-  <button on:click={() => {expanded = !expanded}}>Show details</button>
 </vbox>
 
 <script lang="ts">
+  import CardHeader from "./CardHeader.svelte";
   export let expanded = false;
+  export let hotel: IHotel;
 </script>
 
 <style>
@@ -16,16 +19,5 @@
     border: 1px solid #ccc;
     border-radius: 0.25rem;
     padding: 1rem;
-  }
-
-  button {
-    width: fit-content;
-    margin-left: auto;
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    border-radius: 0.25rem;
-    background: #20466A;
-    color: white;
   }
 </style>
