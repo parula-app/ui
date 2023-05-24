@@ -1,7 +1,9 @@
 <main>
   <h2>Hotels <span>in <u>Madrid</u></span></h2>
-  <MainFilterBar />
-  
+  <vbox>
+    <MainFilterBar />
+    <CustomFilterBar />
+  </vbox>
   <div class="prompt">
     <Prompt>
       Parula, ich brauche deine Hilfe!
@@ -12,11 +14,16 @@
 <script lang="ts">
   import Prompt from "./Prompt.svelte";
   import MainFilterBar from "./MainFilterBar.svelte";
+  import CustomFilterBar from "./CustomFilterBar.svelte";
 </script>
 
 <style>
   main {
     padding: 4rem;
+  }
+
+  vbox {
+    gap: 2rem;
   }
   .prompt {
     position: fixed;
