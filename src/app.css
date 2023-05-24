@@ -74,6 +74,10 @@ button.simple {
   background: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 button.push {
   border-radius: 8px;
   border: 1px solid transparent;

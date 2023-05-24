@@ -3,6 +3,7 @@
   <vbox>
     <MainFilterBar />
     <CustomFilterBar />
+    <Results />
   </vbox>
   <div class="prompt">
     <Prompt>
@@ -15,6 +16,7 @@
   import Prompt from "./Prompt.svelte";
   import MainFilterBar from "./MainFilterBar.svelte";
   import CustomFilterBar from "./CustomFilterBar.svelte";
+  import Results from "./Results.svelte";
 </script>
 
 <style>
