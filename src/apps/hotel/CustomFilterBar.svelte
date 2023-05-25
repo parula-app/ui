@@ -1,7 +1,7 @@
-<hbox>
+<vbox>
   <CustomFilters />
   <CustomFiltersSettings />
-</hbox>
+</vbox>
 
 <script lang="ts">
   import CustomFilters from "./CustomFilters.svelte";
@@ -9,7 +9,7 @@
 </script>
 
 <style>
-  hbox {
-    gap: 2rem;
+  vbox {
+    gap: 1rem;
   }
 </style>

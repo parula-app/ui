@@ -24,8 +24,8 @@
     position: sticky;
     z-index: 1;
     top: 2rem;
-    left: 2rem;
-    right: 2rem;
+    left: 0;
+    right: 0;
     max-width: 35rem;
     margin-inline: auto;
   }

@@ -25,7 +25,7 @@
   }
 
   vbox {
-    gap: 2rem;
+    gap: 1rem;
   }
   .prompt {
     position: fixed;

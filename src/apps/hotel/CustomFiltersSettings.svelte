@@ -1,6 +1,5 @@
 <button>
-  <DotsHorizontal size={32} />
-  More
+  What's important for you?
 </button>
 
 <script lang="ts">
@@ -9,14 +8,13 @@
 
 <style>
   button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
     padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
+    color: #60b1fa;
+    font-weight: 700;
+    border: 2px solid #60b1fa;
+    border-radius: 2rem;
     outline: none;
     background: white;
+    width: fit-content;
   }
 </style>
