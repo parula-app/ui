@@ -19,6 +19,7 @@
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "@carbon/icons": "^11.19.0",
     "svelte-collections": "^1.1.16",
     "svelte-material-icons": "^3.0.4",
     "svelte-navigator": "^3.2.2"
