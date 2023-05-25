@@ -6,14 +6,13 @@
     <CardHeaderFeatures {features} />
     <hbox>
       <h3>{price}€ <span>per Night</span></h3>
-      <button on:click={toggleCard}>Show details</button>
+      <slot name="expandButton" />
     </hbox>
   </vbox>
 
 </hbox>
 
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import CardHeaderFeatures from "./CardHeaderFeatures.svelte";
   import StarRating from "./StarRating.svelte";
 
@@ -25,13 +24,6 @@
   $: src = hotel.image;
   $: alt = hotel.name + " image";
   $: features = hotel.features;
-
-
-	const dispatch = createEventDispatcher();
-
-	function toggleCard() {
-		dispatch('toggle', hotel.id);
-	}
 </script>
 
 <style>
@@ -64,15 +56,5 @@
 
   vbox {
     flex-grow: 1;
-  }
-
-  button {
-    flex-grow: 1;
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    border-radius: 0.25rem;
-    background: #20466A;
-    color: white;
   }
 </style>
