@@ -13,7 +13,7 @@
 </main>
 
 <script lang="ts">
-  import Prompt from "./Prompt.svelte";
+  import Prompt from "../lib/Prompt.svelte";
   import MainFilterBar from "./MainFilterBar.svelte";
   import CustomFilterBar from "./CustomFilterBar.svelte";
   import Results from "./Results.svelte";
@@ -32,7 +32,7 @@
     bottom: 2rem;
     left: 2rem;
     right: 2rem;
-    max-width: 560px;
+    max-width: 35rem;
     margin-inline: auto;
   }
 
