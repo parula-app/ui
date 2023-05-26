@@ -1,9 +1,9 @@
 <script>
   import DoubleRangeSlider from "../lib/DoubleRangeSlider.svelte";
   let min = 25;
-  let max = 80;
-  let start = 30;
-  let end = 50;
+  let max = 250;
+  let start = 25;
+  let end = 180;
 </script>
 
 <vbox>
@@ -15,7 +15,15 @@
 </vbox>
 
 <style>
-  vbox, hbox {
+  hbox {
     gap: 1rem;
+  }
+
+  vbox {
+    gap: 1.5rem;
+    max-width: 18rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
   }
 </style>
