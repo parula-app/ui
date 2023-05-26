@@ -1,10 +1,13 @@
-<hbox>
-  <button><PiggyBankOutline size={32}/>Price</button>
-  <button><StarOutline size={32} />Stars</button>
-  <button><CarBrakeParking size={32} />Parking</button>
-  <button><StarShootingOutline size={32} />Ratings</button>
-  <button><CoffeeOutline size={32} />Breakfast</button>
-</hbox>
+<vbox>
+  <hbox>
+    <button on:click={() => toggleFilter('FilterPrice')}><PiggyBankOutline size={32}/>Price</button>
+    <button on:click={() => toggleFilter('FilterStars')}><StarOutline size={32} />Stars</button>
+    <button on:click={() => toggleFilter('FilterParking')}><CarBrakeParking size={32} />Parking</button>
+    <button on:click={() => toggleFilter('FilterRatings')}><StarShootingOutline size={32} />Ratings</button>
+    <button on:click={() => toggleFilter('FilterBreakfast')}><CoffeeOutline size={32} />Breakfast</button>
+  </hbox>
+  <svelte:component this={filterComponent} />
+</vbox>
 
 <script lang="ts">
   import PiggyBankOutline from "svelte-material-icons/PiggyBankOutline.svelte";
@@ -12,9 +15,25 @@
   import CarBrakeParking from "svelte-material-icons/CarBrakeParking.svelte";
   import StarShootingOutline from "svelte-material-icons/StarShootingOutline.svelte";
   import CoffeeOutline from "svelte-material-icons/CoffeeOutline.svelte";
+  import FilterPrice from "./FilterPrice.svelte";
+  
+  let filter = '';
+  $: filterComponent = getFilterComponent(filter);
+
+  function toggleFilter(filterType: string) {
+    filter = filterType === filter ? '' : filterType;
+  }
+
+  function getFilterComponent(filter: any) {
+    if(filter === 'FilterPrice') return FilterPrice;
+    return null;
+  }
 </script>
 
 <style>
+  vbox {
+    gap: 1rem;
+  }
   hbox {
     gap: 1px;
     border-radius: 0.25rem;
