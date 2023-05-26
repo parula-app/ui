@@ -38,11 +38,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    border: none;
+    padding: 0.25rem 0 0.25rem .5rem;
+    border: 1px solid #ccc;
     outline: none;
     border-radius: 0.25rem;
-    background: #20466A;
-    color: white;
   }
 </style>

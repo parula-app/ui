@@ -10,7 +10,6 @@
 <script lang="ts">
   import Map from "./Map.svelte"; 
   import Card from "./Card.svelte";
-  import CardHeader from "./CardHeader.svelte";
   import { mockedHotels } from "./mockedHotels";
 </script>
 
