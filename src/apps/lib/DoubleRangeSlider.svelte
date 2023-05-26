@@ -4,10 +4,10 @@
 			class="body"
 			bind:this={body}
 			use:draggable
-			on:dragmove|preventDefault|stopPropagation="{setHandlesFromBody}"
+			
 			style="
-				left: {100 * start / max}%;
-				right: {100 - (100 * end / max)}%;
+				left: {percentLeftHandle}%;
+				right: {100 - percentRightHandle}%;
 			"
 			></div>
 		<button
@@ -17,7 +17,7 @@
 			use:draggable
 			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('start')}"
 			style="
-        left: {100 * start / max}%;
+        left: {percentLeftHandle}%;
 			"
 		></button>
 		<button
@@ -26,14 +26,15 @@
 			use:draggable
 			on:dragmove|preventDefault|stopPropagation="{setHandlePosition('end')}"
 			style="
-        left: {100 * end / max}%;
+        left: {percentRightHandle}%;
 			"
 		></button>
 	</div>
 </div>
 
 <script>
-  import { clamp } from "../../utils/clamp";
+  import { onMount } from "svelte";
+
 	export let start = 10;
 	export let end = 90;
   export let min = 0;
@@ -42,6 +43,14 @@
   let leftHandle;
 	let body;
 	let slider;
+
+  let percentLeftHandle;
+  let percentRightHandle;
+
+  onMount(() => {
+    percentLeftHandle = (start - min) / (max - min) * 100;
+    percentRightHandle = (end - min) / (max - min) * 100;
+  });
 
 	function draggable(node) {
 		let x;
@@ -100,31 +109,20 @@
 	
   function setHandlePosition (which) {
 		return function (evt) {
-			const { left, right } = slider.getBoundingClientRect();
-			const parentWidth = right - left;
-			const p = Math.min(Math.max((evt.detail.x - left) / parentWidth, 0), 1);
-			
+			const { left, width } = slider.getBoundingClientRect();
+			const percentX = Math.min(Math.max((evt.detail.x - left) / width, 0), 1);
+      
       if (which === 'start') {
-				start = ((max - min) * p) + min;
-				end = Math.max(start, end);
+				percentLeftHandle = percentX * 100;
+				percentRightHandle = Math.max(percentLeftHandle, percentRightHandle);
 			} else {
-        end = ((max - min) * p) + min;
-				start = Math.min(start, end);
+        percentRightHandle = percentX * 100;
+				percentLeftHandle = Math.min(percentLeftHandle, percentRightHandle);
 			}
+      
+      start = Math.round((percentLeftHandle * (max - min) / 100) + min);
+      end = Math.round((percentRightHandle * (max - min) / 100) + min);
 		}
-	}
-	
-  function setHandlesFromBody (event) {
-		const { width } = body.getBoundingClientRect();
-		const { left, right } = slider.getBoundingClientRect();
-		const parentWidth = right - left;
-		const leftHandleLeft = leftHandle.getBoundingClientRect().left;
-		const pxStart = clamp((leftHandleLeft + event.detail.dx) - left, 0, parentWidth - width);
-		const pxEnd = clamp(pxStart + width, width, parentWidth);
-		const pStart = pxStart / parentWidth;
-		const pEnd = pxEnd / parentWidth;
-		start = pStart;
-		end = pEnd;
 	}
 </script>
 
