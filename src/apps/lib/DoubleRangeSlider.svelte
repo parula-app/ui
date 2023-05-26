@@ -121,24 +121,19 @@
 		const leftHandleLeft = leftHandle.getBoundingClientRect().left;
 		const pxStart = clamp((leftHandleLeft + event.detail.dx) - left, 0, parentWidth - width);
 		const pxEnd = clamp(pxStart + width, width, parentWidth);
-    console.log('pxStart',pxStart);
-    console.log('pxEnd',pxEnd);
 		const pStart = pxStart / parentWidth;
 		const pEnd = pxEnd / parentWidth;
 		start = pStart;
 		end = pEnd;
 	}
-
 </script>
-
-
 
 <style>
 	.double-range-container {
-		height: 20px;
 		user-select: none;
 		box-sizing: border-box;
 		white-space: nowrap;
+    padding-inline: 0.75rem;
 	}
 	.slider {
 		position: relative;
@@ -146,45 +141,30 @@
 		top: 50%;
 		transform: translate(0, -50%);
 		background-color: #e2e2e2;
-		box-shadow: inset 0 7px 10px -5px #4a4a4a, inset 0 -1px 0px 0px #9c9c9c;
-		border-radius: 1px;
+		border-radius: 0.25rem;
 	}
 	.handle {
 		position: absolute;
 		top: 50%;
-    width: 16px;
-		height: 16px;
+    width: 1.5rem;
+		height: 1.5rem;
     outline: none;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 50%;
+    background-color: #21466a;
+    transform: translate(-50%, -50%);
 	}
 
-  .handle::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 50%;
+  .handle:active,
+  .handle:hover {
+    outline: rgba(33, 70, 106, 0.1) solid 0.5rem;
+    z-index: 9;
   }
 	
-  .handle[data-which="start"] {
-    transform: translateY(-50%);
-	}
-	.handle[data-which="end"] {
-    transform: translate(-100%, -50%);
-	}
-	.handle:active:after {
-		background-color: #ddd;
-		z-index: 9;
-	}
 	.body {
 		top: 0;
 		position: absolute;
-		background-color: #34a1ff;
+		background-color: #21466a;
 		bottom: 0;
 	}
 </style>
