@@ -6,17 +6,14 @@ export class Observable {
     if (typeof (observerFunc) != "function") {
       throw new Error("Need function as observer");
     }
-    console.log("subscribe", this.observers.length);
     this.observers.push(observerFunc);
     observerFunc(this);
     return () => {
       arrayRemove(this.observers, observerFunc);
-      console.log("unsubscribe", this.observers.length);
     };
   }
 
   notifyChanged(propertyName: string = null) {
-    console.log("fire observers");
     for (const observer of this.observers) {
       try {
         observer(propertyName);
@@ -26,14 +23,6 @@ export class Observable {
     }
   }
 }
-
-function arrayRemove<T>(array: Array<T>, item: T) {
-  const pos = array.indexOf(item);
-  if (pos != -1) {
-    array.splice(pos, 1);
-  }
-}
-
 
 // TODO doesn't work, setter not called
 export function notifyPropertyChanged(obj: Observable, propertyName: string): void {
@@ -61,4 +50,11 @@ export function notifySetterChanged(obj: Observable, propertyName: string): void
     originalSetter.call(this, value);
     this.notifyChanged(propertyName);
   };
+}
+
+function arrayRemove<T>(array: Array<T>, item: T) {
+  const pos = array.indexOf(item);
+  if (pos != -1) {
+    array.splice(pos, 1);
+  }
 }

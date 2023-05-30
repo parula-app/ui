@@ -16,8 +16,6 @@
   import Unchecked from "svelte-material-icons/CircleOutline.svelte";
 
   export let task: Task;
-
-  $: console.log("task", task);
 </script>
 
 <style>
