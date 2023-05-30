@@ -1,9 +1,4 @@
 <Router>
-	<nav>
-		<Link to="/">Home</Link>
-		<Link to="clock">Clock</Link>
-		<Link to="hotel">Hotel</Link>
-	</nav>
 	<vbox class="app-content">
 		<Route path="/">
 			<Home />

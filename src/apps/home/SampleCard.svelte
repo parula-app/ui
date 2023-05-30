@@ -16,6 +16,7 @@
     width: 100%;
     background: white;
     height: auto;
+    margin-top: 10px;
   }
 
   p {
