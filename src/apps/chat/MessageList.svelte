@@ -30,5 +30,13 @@
 <style>
   .messages {
     flex: 1 0 0;
+    color: #002E56; /* dark blue */
+  }
+  .messages,
+  :global(body[theme="dark"]) .messages {
+    background-color: #002E56; /* dark blue */
+  }
+  :global(body[theme="light"]) .messages {
+    background-color: #E7EEFC; /* light blue*/
   }
 </style>

@@ -56,11 +56,21 @@
     margin: 15px 5rem 0 5rem;
     padding: 3px 10px;
     max-width: 70%;
-    border: 1px outset white;
-    border-radius: 10px;
+    border-right: 1px solid rgb(0, 0, 0, 20%);
+    border-bottom: 1px solid rgb(0, 0, 0, 20%);
+    border-radius: 6px;
     padding: 10px 15px;
     position: relative;
-    color: black;
+  }
+  .message,
+  :global(body[theme="dark"]) .message {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  :global(body[theme="light"]) .message {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 3px;
+    border-left: 3px solid #1F476A; /* lighter dark blue */
   }
   .incoming {
     align-self: flex-start;
@@ -68,7 +78,7 @@
   }
   .outgoing {
     align-self: flex-end;
-    background-color: papayawhip;
+    background-color: #F4F6F7; /* light grey */
   }
   .message.followup {
     margin-top: -3px;
@@ -84,8 +94,8 @@
     content: '';
     position: absolute;
     top: 100%;
-    left: 10px;
-    border-width: 10px 10px 0 0;
+    left: 23%;
+    border-width: 15px 15px 0 0;
     border-style: solid;
     border-color: white transparent transparent transparent;
   }
@@ -93,10 +103,10 @@
     content: '';
     position: absolute;
     top: 100%;
-    right: 10px;
-    border-width: 10px 0 0 10px;
+    right: 23%;
+    border-width: 15px 0 0 15px;
     border-style: solid;
-    border-color: papayawhip transparent transparent transparent;
+    border-color: #F4F6F7 transparent transparent transparent;
   }
 
   .avatar {
