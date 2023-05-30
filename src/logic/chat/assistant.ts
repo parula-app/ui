@@ -26,6 +26,9 @@ class ParulaClient {
         return;
       }
       const { response, app, appArgs } = parulaParser(question.text);
+      // TODO replace with Pia NLP
+      // let { intent, args } = await this.intentParser.match(question.text);
+      // return await this.intentParser.startIntent(intent, args);
       const answer = new ParulaMessage();
       answer.contact = parula;
       answer.outgoing = false;
@@ -42,10 +45,6 @@ export const parula = new Parula();
 export const parulaClient = new ParulaClient();
 
 function parulaParser(question: string): { response: string, app: string, appArgs: {} } {
-  // TODO replace with Pia NLP
-  // let { intent, args } = await this.intentParser.match(question.text);
-  // return await this.intentParser.startIntent(intent, args);
-
   // dummy parser
   const words = question.split(" ");
   const lowercase = question.toLowerCase().split(" ");
