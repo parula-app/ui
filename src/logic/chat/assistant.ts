@@ -1,4 +1,5 @@
 import { ArrayColl } from "svelte-collections";
+import { TODOList, Task } from "../../apps/todo/TODO";
 import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
 // import { Client } from 'pia/client/Client.js';
@@ -55,8 +56,21 @@ function parulaParser(question: string): { response: string, app: string, appArg
     const inPos = lowercase.indexOf("in");
     let city: string = inPos >= 0 ? words[inPos + 1] : null;
     return {
-      response: "Here are some hotels" + (city ? " in " + city : ""), app: "hotel", appArgs: { city: city }
+      response: `Here are some hotels${city ? " in " + city : ""}`, app: "hotel", appArgs: { city: city }
     };
+  }
+  if (lowercase.includes("todo") || lowercase.includes("list")) {
+    let inPos = lowercase.indexOf("add");
+    if (inPos < 0) {
+      inPos = lowercase.indexOf("put");
+    }
+    let task: string = inPos >= 0 ? words[inPos + 1] : null;
+    if (task) {
+      TODOList.add(new Task(task));
+      return {
+        response: `I've added ${task} to your TODO list`, app: "todo", appArgs: { task: task }
+      };
+    }
   }
   return { response: "Why did you ask?", app: null, appArgs: {} }
 }

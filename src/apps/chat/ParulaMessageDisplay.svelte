@@ -25,7 +25,9 @@
     {/if}
     <hbox class="text">{@html message.html }</hbox>
     {#if message.app}
-      <AppLoad app={message.app} args={message.appArgs} /> 
+      <vbox class="app">
+        <AppLoad app={message.app} args={message.appArgs} />
+      </vbox>
     {/if}
   </vbox>
 </hbox>
@@ -119,6 +121,11 @@
   .text {
     font-size: smaller;
     user-select: text;
+  }
+
+  .app {
+    flex: 1 0 0;
+    margin-top: 10px;
   }
 
   .date-separator {

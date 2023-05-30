@@ -11,11 +11,11 @@
 <script lang="ts">
   import Microphone from "svelte-material-icons/MicrophoneOutline.svelte";
   import { parula, messages } from "../../logic/chat/assistant";
-  import { ChatMessage } from "../../logic/chat/Message";
+  import { ParulaMessage } from "../../logic/chat/ParulaMessage";
 
   let value = "";
   function startQuery() {
-    let message = new ChatMessage();
+    let message = new ParulaMessage();
     message.text = value;
     message.html = value;
     message.outgoing = true;

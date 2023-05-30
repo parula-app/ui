@@ -14,9 +14,19 @@
     "allowJs": true,
     "checkJs": true,
     "isolatedModules": true,
+    "experimentalDecorators": true,
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
