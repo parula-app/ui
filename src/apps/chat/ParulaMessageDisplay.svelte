@@ -56,8 +56,7 @@
     margin: 15px 5rem 0 5rem;
     padding: 3px 10px;
     max-width: 70%;
-    border-right: 1px solid rgb(0, 0, 0, 20%);
-    border-bottom: 1px solid rgb(0, 0, 0, 20%);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 15%);
     border-radius: 6px;
     padding: 10px 15px;
     position: relative;
