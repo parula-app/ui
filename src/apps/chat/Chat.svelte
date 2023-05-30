@@ -1,15 +1,15 @@
 <container>
+  <MessageList {messages} />
   <div class="prompt">
     <Prompt>Parula, I need help!</Prompt>
   </div>
-  <MessageList {messages} />
 </container>
 
 <script lang="ts">
-  import type { Collection } from "svelte-collections";
-  import type { ChatMessage } from "../../../logic/chat/Message";
+  import { type Collection } from "svelte-collections";
+  import type { ChatMessage } from "../../logic/chat/Message";
   import MessageList from "./MessageList.svelte";
-  import Prompt from "../Prompt.svelte";
+  import Prompt from "../lib/Prompt.svelte";
 
   export let messages: Collection<ChatMessage>;
 </script>
@@ -23,9 +23,8 @@
   .prompt {
     position: sticky;
     z-index: 1;
-    top: 2rem;
+    bottom: 2rem;
     left: 0;
-    right: 0;
     max-width: 35rem;
     margin-inline: auto;
   }

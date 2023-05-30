@@ -28,8 +28,8 @@
 </hbox>
 
 <script lang="ts">
-  import type { ChatMessage } from "../../../logic/chat/Message";
-  import { getDateString } from "../../../utils/date";
+  import type { ChatMessage } from "../../logic/chat/Message";
+  import { getDateString } from "../../utils/date";
 
   export let message: ChatMessage;
   export let previousMessage: ChatMessage = null;

@@ -1,15 +1,35 @@
-<script>
-  import Microphone from "svelte-material-icons/MicrophoneOutline.svelte";
-</script>
-
 <hbox>
   <span class="promtIcon">
     <Microphone size="24"/>
   </span>
   <span class="text">
-    <slot/>
+    <input bind:value on:keydown={onKey} placeholder="Parula, I need help!">
   </span>  
 </hbox>
+
+<script lang="ts">
+  import Microphone from "svelte-material-icons/MicrophoneOutline.svelte";
+  import { parula, messages } from "../../logic/chat/assistant";
+  import { Message } from "../../logic/abstract/Message";
+
+  let value = "";
+  function startQuery() {
+    let message = new Message();
+    message.text = value;
+    message.outgoing = true;
+    message.contact = parula;
+    messages.push(message);
+    value = "";
+  }
+
+  function onKey(event: KeyboardEvent) {
+    if (event.key == "Enter") {
+      startQuery();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+</script>
 
 <style>
   hbox {
@@ -37,5 +57,4 @@
     background-color: red;
     color: white
   }
-
 </style>
