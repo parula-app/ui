@@ -1,6 +1,12 @@
 export const mockedData = [
   {
     id: crypto.randomUUID(),
+    src: "/assets/images/hotel.png",
+    alt: "find hotel",
+    prompt: "Can you help me find a nice hotel in Wiesbaden for tonight?",
+  },
+  {
+    id: crypto.randomUUID(),
     src: "/assets/images/alarm.png",
     alt: "setup alarm clock",
     prompt: "Wake me up at 5am",
@@ -11,12 +17,6 @@ export const mockedData = [
     alt: "find appartments",
     prompt:
       "Show me the two bedroom apartments for rent in London",
-  },
-  {
-    id: crypto.randomUUID(),
-    src: "/assets/images/hotel.png",
-    alt: "find hotel",
-    prompt: "Can you help me find a nice hotel in Wiesbaden for tonight?",
   },
   {
     id: crypto.randomUUID(),
@@ -48,5 +48,11 @@ export const mockedData = [
     src: "/assets/images/shopping-phone.png",
     alt: "find phone",
     prompt: "I'd like a nice new phone. But no more than 800 €",
+  },
+  {
+    id: crypto.randomUUID(),
+    src: "/assets/images/alarm.png",
+    alt: "clock",
+    prompt: "What time is it?",
   },
 ];

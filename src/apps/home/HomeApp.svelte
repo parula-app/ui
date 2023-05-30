@@ -11,17 +11,22 @@
   import { messages, parula } from "../../logic/chat/assistant";
   import { mockedData } from "./data";
   import { ParulaMessage } from "../../logic/chat/ParulaMessage";
+  import { onMount } from "svelte";
 
-  for (let sample of mockedData) {
-    const message = new ParulaMessage();
-    message.app = "sample";
-    message.appArgs = sample;
-    message.text = sample.prompt;
-    message.html = sample.prompt;
-    message.contact = parula;
-    message.outgoing = true;
-    messages.add(message);
-  }
+  onMount(() => {
+    if (messages.isEmpty) {
+      for (let sample of mockedData) {
+        const message = new ParulaMessage();
+        message.app = "sample";
+        message.appArgs = sample;
+        message.text = sample.prompt;
+        message.html = sample.prompt;
+        message.contact = parula;
+        message.outgoing = true;
+        messages.add(message);
+      }
+    }
+  });
 </script>
 
 <style>
