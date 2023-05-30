@@ -1,5 +1,5 @@
 <main>
-  <h2>Hotels <span>in <u>Madrid</u></span></h2>
+  <h2>Hotels <span>in <u>{args.city || "Wiesbaden"}</u></span></h2>
   <vbox>
     <MainFilterBar />
     <CustomFilterBar />
@@ -15,6 +15,8 @@
   import MainFilterBar from "./MainFilterBar.svelte";
   import CustomFilterBar from "./CustomFilterBar.svelte";
   import Results from "./Results.svelte";
+
+  export let args: { [prop in string]: any };
 </script>
 
 <style>

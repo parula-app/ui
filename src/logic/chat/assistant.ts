@@ -46,13 +46,14 @@ function parulaParser(question: string): { response: string, app: string, appArg
   // return await this.intentParser.startIntent(intent, args);
 
   // dummy parser
-  if (question.includes("time")) {
+  const lowercase = question.toLowerCase();
+  if (lowercase.includes("time")) {
     return { response: "", app: "clock", appArgs: {} };
   }
-  if (question.includes("hotel")) {
+  if (lowercase.includes("hotel")) {
     const words = question.split(" ");
     const inPos = words.indexOf("in");
-    let city: string = inPos ? words[inPos + 1] : null;
+    let city: string = inPos >= 0 ? words[inPos + 1] : null;
     return {
       response: "Here are some hotels" + (city ? " in " + city : ""), app: "hotel", appArgs: { city: city }
     };

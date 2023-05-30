@@ -5,7 +5,7 @@ export class ParulaMessage extends Message {
    * May be null. */
   app: string;
   /** The intent specific arguments from the IntentParser */
-  appArgs: {};
+  appArgs: { [prop in string]: any };
 
   constructor() {
     super();

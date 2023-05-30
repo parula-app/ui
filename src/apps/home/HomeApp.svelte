@@ -1,5 +1,4 @@
 <vbox class="home">
-  <Samples />
   <MessageList {messages} />
   <div class="prompt">
     <Prompt />
@@ -7,11 +6,22 @@
 </vbox>
 
 <script lang="ts">
-  import Samples from "./Samples.svelte";
   import MessageList from "../chat/MessageList.svelte";
   import Prompt from "../lib/Prompt.svelte";
+  import { messages, parula } from "../../logic/chat/assistant";
+  import { mockedData } from "./data";
+  import { ParulaMessage } from "../../logic/chat/ParulaMessage";
 
-  import { messages } from "../../logic/chat/assistant";
+  for (let sample of mockedData) {
+    const message = new ParulaMessage();
+    message.app = "sample";
+    message.appArgs = sample;
+    message.text = sample.prompt;
+    message.html = sample.prompt;
+    message.contact = parula;
+    message.outgoing = true;
+    messages.add(message);
+  }
 </script>
 
 <style>

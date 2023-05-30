@@ -1,16 +1,14 @@
-<div>
-  <img {src} {alt} />
-  <p>{prompt}</p>
-</div>
+<vbox class="sample">
+  <img src={args.src} alt={args.alt} />
+</vbox>
 
 <script lang="ts">
-  export let src: string;
-  export let alt: string;
-  export let prompt: string;
+  export let args: { [prop in string]: any};
+  $: console.log("sample args", args);
 </script>
 
 <style>
-  div {
+  .sample {
     width: 200px;
   }
 
