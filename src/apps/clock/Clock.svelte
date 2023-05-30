@@ -13,7 +13,7 @@
     seconds = new Date().toLocaleTimeString([], { second: "2-digit" });
   }
 
-  let ticker: number;
+  let ticker: NodeJS.Timeout;
   onMount(() => {
     setTime();
     ticker = setInterval(setTime, 1000);

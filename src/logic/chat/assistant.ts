@@ -1,9 +1,9 @@
 import { ArrayColl } from "svelte-collections";
 import { Person } from "../abstract/Person";
-import { ChatMessage } from "./Message";
+import { ParulaMessage } from "./ParulaMessage";
 // import { Client } from 'pia/client/Client.js';
 
-export let messages = new ArrayColl<ChatMessage>();
+export let messages = new ArrayColl<ParulaMessage>();
 
 class Parula extends Person {
   constructor() {
@@ -24,14 +24,14 @@ class ParulaClient {
       if (!question || question.contact != parula || !question.outgoing) {
         return;
       }
-      // let { intent, args } = await this.intentParser.match(question.text);
-      // let response = await this.intentParser.startIntent(intent, args);
-      let response = "Why did you ask?";
-      const answer = new ChatMessage();
+      const { response, app, appArgs } = parulaParser(question.text);
+      const answer = new ParulaMessage();
       answer.contact = parula;
       answer.outgoing = false;
       answer.text = response;
       answer.html = response;
+      answer.app = app;
+      answer.appArgs = appArgs;
       messages.push(answer);
     });
   }
@@ -39,3 +39,23 @@ class ParulaClient {
 
 export const parula = new Parula();
 export const parulaClient = new ParulaClient();
+
+function parulaParser(question: string): { response: string, app: string, appArgs: {} } {
+  // TODO replace with Pia NLP
+  // let { intent, args } = await this.intentParser.match(question.text);
+  // return await this.intentParser.startIntent(intent, args);
+
+  // dummy parser
+  if (question.includes("time")) {
+    return { response: "", app: "clock", appArgs: {} };
+  }
+  if (question.includes("hotel")) {
+    const words = question.split(" ");
+    const inPos = words.indexOf("in");
+    let city: string = inPos ? words[inPos + 1] : null;
+    return {
+      response: "Here are some hotels" + (city ? " in " + city : ""), app: "hotel", appArgs: { city: city }
+    };
+  }
+  return { response: "Why did you ask?", app: null, appArgs: {} }
+}

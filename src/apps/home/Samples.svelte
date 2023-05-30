@@ -1,11 +1,11 @@
 <grid>
   {#each mockedData as item (item.id)}
-    <Card src={item.src} alt={item.alt} prompt={item.prompt} />
+    <SampleCard src={item.src} alt={item.alt} prompt={item.prompt} />
   {/each}
 </grid>
 
 <script lang="ts">
-  import Card from "./Card.svelte";
+  import SampleCard from "./SampleCard.svelte";
 
   import { mockedData } from "./data";
 </script>

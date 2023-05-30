@@ -24,15 +24,19 @@
       </hbox>
     {/if}
     <hbox class="text">{@html message.html }</hbox>
+    {#if message.app}
+      <AppLoad app={message.app} args={message.appArgs} /> 
+    {/if}
   </vbox>
 </hbox>
 
 <script lang="ts">
-  import type { ChatMessage } from "../../logic/chat/Message";
+  import type { ParulaMessage } from "../../logic/chat/ParulaMessage";
   import { getDateString } from "../../utils/date";
+  import AppLoad from "../loader/AppLoad.svelte";
 
-  export let message: ChatMessage;
-  export let previousMessage: ChatMessage = null;
+  export let message: ParulaMessage;
+  export let previousMessage: ParulaMessage = null;
   $: followup = message.contact == previousMessage?.contact && // same author
     message.outgoing == previousMessage?.outgoing && // same author
     message.sent.getMilliseconds() - previousMessage.sent.getMilliseconds() < 5 * 60 * 1000; // < 5 mins apart
