@@ -11,7 +11,7 @@
 
   export let messages: Collection<ChatMessage>;
 
-  $: sortedMessages = messages.sortBy(msg => msg.sent);
+  $: sortedMessages = $messages.sortBy(msg => msg.sent);
 </script>
 
 <style>
