@@ -21,7 +21,9 @@
   $: $messages && scroller && scrollDown();
   async function scrollDown() {
     await tick(); // wait for message to be added to HTML
-    scroller.scrollDown();
+    if (scroller && scroller.scrollDown) {
+      scroller.scrollDown();
+    }
   }
 </script>
 

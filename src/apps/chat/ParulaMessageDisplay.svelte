@@ -51,7 +51,7 @@
 <style>
   /** Speech bubble */
   .message {
-    margin: 15px 30px 0 30px;
+    margin: 15px 5rem 0 5rem;
     padding: 3px 10px;
     max-width: 70%;
     border: 1px outset white;

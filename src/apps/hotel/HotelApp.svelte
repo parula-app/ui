@@ -5,18 +5,16 @@
     <CustomFilterBar />
     <Results />
   </vbox>
-  <div class="prompt">
-    <Prompt />
-  </div>
 </main>
 
 <script lang="ts">
-  import Prompt from "../lib/Prompt.svelte";
   import MainFilterBar from "./MainFilterBar.svelte";
   import CustomFilterBar from "./CustomFilterBar.svelte";
   import Results from "./Results.svelte";
 
   export let args: { [prop in string]: any };
+
+  $: console.log("hotel", args);
 </script>
 
 <style>
@@ -26,14 +24,6 @@
 
   vbox {
     gap: 1rem;
-  }
-  .prompt {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    max-width: 35rem;
-    margin-inline: auto;
   }
 
   h2 span {

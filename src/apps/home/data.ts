@@ -20,12 +20,6 @@ export const mockedData = [
   },
   {
     id: crypto.randomUUID(),
-    src: "/assets/images/plumber.png",
-    alt: "find help",
-    prompt: "A plumber! RIGHT NOW!",
-  },
-  {
-    id: crypto.randomUUID(),
     src: "/assets/images/reminder.png",
     alt: "remind me",
     prompt: "Remind me to water the plants every Wednesday",
@@ -54,5 +48,11 @@ export const mockedData = [
     src: "/assets/images/alarm.png",
     alt: "clock",
     prompt: "What time is it?",
+  },
+  {
+    id: crypto.randomUUID(),
+    src: "/assets/images/plumber.png",
+    alt: "find help",
+    prompt: "A plumber! RIGHT NOW!",
   },
 ];

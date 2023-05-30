@@ -4,7 +4,6 @@
 
 <script lang="ts">
   export let args: { [prop in string]: any};
-  $: console.log("sample args", args);
 </script>
 
 <style>
