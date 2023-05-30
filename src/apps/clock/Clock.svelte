@@ -1,0 +1,36 @@
+<hbox class="time">
+  <hbox class="hour-min">{hourMin}</hbox>
+  <hbox class="seconds">:{seconds}</hbox>
+</hbox>
+
+<script lang="ts">
+  import { onDestroy, onMount } from "svelte";
+
+  let hourMin = "";
+  let seconds = "";
+  function setTime() {
+    hourMin = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    seconds = new Date().toLocaleTimeString([], { second: "2-digit" });
+  }
+
+  let ticker: number;
+  onMount(() => {
+    setTime();
+    ticker = setInterval(setTime, 1000);
+  });
+  onDestroy(() => {
+    clearInterval(ticker);
+  });
+</script>
+
+<style>
+  .time {
+    align-items: baseline;
+  }
+  .hour-min {
+    font-size: 40pt;
+  }
+  .seconds {
+    font-size: 10pt;
+  }
+</style>

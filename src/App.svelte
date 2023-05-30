@@ -1,6 +1,7 @@
 <Router>
 	<nav>
 		<Link to="/">Home</Link>
+		<Link to="clock">Clock</Link>
 		<Link to="hotel">Hotel</Link>
 	</nav>
 	<div>
@@ -8,14 +9,15 @@
 			<Home />
 		</Route>
 		<Route path="hotel" component={Hotel} />
-		<!-- <Route path="blog/*">
+		<Route path="clock" component={Clock} />
+		<!-- <Route path="hotel/*">
 			<Route path="/">
-				<Blog />
+				<Hotel />
 			</Route>
-			<Route path=":id" component={BlogPost} />
+			<Route path=":id" component={HotelDetail} />
 		</Route>
-		<Route path="search/:query" let:params>
-			<Search query={params.query} />
+		<Route path="hotel/search/:query" let:params>
+			<HotelSearch query={params.query} />
 		</Route> -->
 	</div>
 </Router>
@@ -24,4 +26,5 @@
 	import { Router, Link, Route } from "svelte-navigator";
 	import Home from "./apps/home/HomeApp.svelte";
 	import Hotel from "./apps/hotel/HotelApp.svelte";
+	import Clock from "./apps/clock/Clock.svelte";
 </script>
