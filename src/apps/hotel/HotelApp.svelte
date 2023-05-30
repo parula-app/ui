@@ -6,9 +6,7 @@
     <Results />
   </vbox>
   <div class="prompt">
-    <Prompt>
-      Parula, I need your help!
-    </Prompt>
+    <Prompt />
   </div>
 </main>
 

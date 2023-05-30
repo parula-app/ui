@@ -20,8 +20,8 @@ class ParulaClient {
   constructor() {
     // super();
     messages.subscribe(async () => {
-      const question = messages[messages.length - 1];
-      if (question.contact != parula || !question.outgoing) {
+      const question = messages.get(messages.length - 1);
+      if (!question || question.contact != parula || !question.outgoing) {
         return;
       }
       // let { intent, args } = await this.intentParser.match(question.text);
@@ -31,6 +31,7 @@ class ParulaClient {
       answer.contact = parula;
       answer.outgoing = false;
       answer.text = response;
+      answer.html = response;
       messages.push(answer);
     });
   }

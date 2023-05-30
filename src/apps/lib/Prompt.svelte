@@ -1,24 +1,26 @@
-<hbox>
-  <span class="promtIcon">
+<hbox class="prompt">
+  <!-- TODO use hbox, not span, not grid -->
+  <span class="prompt icon">
     <Microphone size="24"/>
   </span>
-  <span class="text">
+  <hbox class="text">
     <input bind:value on:keydown={onKey} placeholder="Parula, I need help!">
-  </span>  
+  </hbox>  
 </hbox>
 
 <script lang="ts">
   import Microphone from "svelte-material-icons/MicrophoneOutline.svelte";
   import { parula, messages } from "../../logic/chat/assistant";
-  import { Message } from "../../logic/abstract/Message";
+  import { ChatMessage } from "../../logic/chat/Message";
 
   let value = "";
   function startQuery() {
-    let message = new Message();
+    let message = new ChatMessage();
     message.text = value;
+    message.html = value;
     message.outgoing = true;
     message.contact = parula;
-    messages.push(message);
+    messages.add(message);
     value = "";
   }
 
@@ -32,7 +34,7 @@
 </script>
 
 <style>
-  hbox {
+  hbox.prompt {
     gap: 1rem;
     align-items: flex-start;
     padding: 0.25rem;
@@ -43,11 +45,17 @@
   }
 
   .text {
-    flex-grow: 1;
-    padding-top: 0.25rem;
+    flex: 1 0 0;
   }
-  
-  .promtIcon {
+
+  input {
+    display: flex;
+    flex: 1 0 0;
+    background-color: unset;
+    border: none;
+  }
+
+  .prompt.icon {
     flex-shrink: 0;
     display: grid;
     place-items: center;

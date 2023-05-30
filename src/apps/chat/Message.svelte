@@ -118,6 +118,7 @@
   }
   .text {
     font-size: smaller;
+    user-select: text;
   }
 
   .date-separator {

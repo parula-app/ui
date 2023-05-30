@@ -1,7 +1,7 @@
 <container>
   <MessageList {messages} />
   <div class="prompt">
-    <Prompt>Parula, I need help!</Prompt>
+    <Prompt />
   </div>
 </container>
 
