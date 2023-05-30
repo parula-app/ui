@@ -47,10 +47,6 @@
 <style>
   /** Speech bubble */
   .message {
-    min-width: 4rem;
-    min-height: 4rem;
-    background: red;
-    flex: 1 0 0;
     margin: 15px 30px 0 30px;
     padding: 3px 10px;
     max-width: 70%;

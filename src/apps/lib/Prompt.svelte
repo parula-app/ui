@@ -53,6 +53,7 @@
     flex: 1 0 0;
     background-color: unset;
     border: none;
+    font-size: 13pt;
   }
 
   .prompt.icon {

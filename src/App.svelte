@@ -4,7 +4,7 @@
 		<Link to="clock">Clock</Link>
 		<Link to="hotel">Hotel</Link>
 	</nav>
-	<div>
+	<vbox class="app-content">
 		<Route path="/">
 			<Home />
 		</Route>
@@ -19,7 +19,7 @@
 		<Route path="hotel/search/:query" let:params>
 			<HotelSearch query={params.query} />
 		</Route> -->
-	</div>
+	</vbox>
 </Router>
 
 <script>
@@ -28,3 +28,9 @@
 	import Hotel from "./apps/hotel/HotelApp.svelte";
 	import Clock from "./apps/clock/Clock.svelte";
 </script>
+
+<style>
+	.app-content {
+		flex: 1 0 0;
+	}
+</style>

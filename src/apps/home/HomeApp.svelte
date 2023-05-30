@@ -1,35 +1,32 @@
-<vbox>
-  <grid>
-    {#each mockedData as item (item.id)}
-      <Card src={item.src} alt={item.alt} prompt={item.prompt} />
-    {/each}
-  </grid>
-  <Chat {messages} />
+<vbox class="home">
+  <Samples />
+  <MessageList {messages} />
+  <div class="prompt">
+    <Prompt />
+  </div>
 </vbox>
 
 <script lang="ts">
-  import Chat from "../chat/Chat.svelte";
-  import Card from "./Card.svelte";
-  import { mockedData } from "./data";
+  import Samples from "./Samples.svelte";
+  import MessageList from "../chat/MessageList.svelte";
+  import Prompt from "../lib/Prompt.svelte";
 
   import { messages } from "../../logic/chat/assistant";
 </script>
 
 <style>
-  vbox {
+  .home {
+    flex: 1 0 0;
     padding: 4rem;
     gap: 3rem;
   }
-  grid   {
-    --cols: auto-fit;
-    display: grid;
-    grid-template-columns: repeat(var(--cols), 200px);
-    gap: 1rem;
-    justify-content: center;
-  }
-  @media (width >= 880px) {
-    grid {
-      --cols: 4;
-    }
+
+  .prompt {
+    position: sticky;
+    z-index: 1;
+    bottom: 2rem;
+    left: 0;
+    max-width: 35rem;
+    margin-inline: auto;
   }
 </style>
