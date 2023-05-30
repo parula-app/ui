@@ -1,5 +1,5 @@
 <main>
-  <h2>Hotels <span>in <u>{args.city || "Wiesbaden"}</u></span></h2>
+  <h2>Hotels <span>in <u>{args?.city || "Wiesbaden"}</u></span></h2>
   <vbox>
     <MainFilterBar />
     <CustomFilterBar />

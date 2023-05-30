@@ -15,9 +15,15 @@
 
 <style>
   grid {
-    display: grid;
-    grid-template-columns: minmax(370px, 505px) 1fr;
+    display: grid;  
     gap: 1rem;
+    grid-template-columns: minmax(370px, 505px) 1fr;
+  }
+
+  @media (width <= 860px) {
+    grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   h3, p {

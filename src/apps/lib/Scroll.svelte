@@ -14,5 +14,7 @@
     flex: 1 0 0;
     position: relative;
     overflow: auto;
+    gap: 2rem;
+    padding-inline: 2rem;
   }
 </style>
