@@ -1,11 +1,15 @@
 <hbox>
-  <DateRangePicker fromDate="Wed, 10 May 2024" toDate="Wed, 17 May 2024" />
+  <DateRangePicker {fromDate} {toDate} />
   <AmountSelect value={1} />
 </hbox>
 
 <script lang="ts">
-  import DateRangePicker from "./DateRangePicker.svelte";
+  import dayjs from "dayjs";
+  import DateRangePicker from "../lib/date/DateRangePicker.svelte";
   import AmountSelect from "./AmountSelect.svelte";
+
+  export let fromDate: Date = new Date();
+  export let toDate: Date = dayjs(fromDate).add(7, "day").toDate();
 </script>
 
 <style>
