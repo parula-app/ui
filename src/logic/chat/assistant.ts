@@ -13,6 +13,7 @@ class Parula extends Person {
     this.name = "Parula";
     this.firstName = "Parula";
     this.lastName = "Digital Assistant";
+    this.picture = "/logo/parula.svg";
   }
 }
 
