@@ -26,6 +26,7 @@
 <style>
   .time {
     align-items: baseline;
+    justify-content: center;
   }
   .hour-min {
     font-size: 40pt;
