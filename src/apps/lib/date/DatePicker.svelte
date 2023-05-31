@@ -26,7 +26,8 @@
     z-index: 2;
   }
   :global(.dateInput input) {
-    padding: 1rem !important;
+    height: 36px !important;
+    padding: 0 0.75rem !important;
     border: none !important;
   }
   :global(.dateInput input:focus) {
