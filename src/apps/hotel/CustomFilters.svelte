@@ -1,6 +1,7 @@
 <vbox>
   <hbox>
     <PriceFilter />
+    <StarsFilter />
     <button on:click={() => toggleFilter('FilterStars')} class:inActive={filter && filter !== 'FilterStars'}><StarOutline size={32} />Stars</button>
     <button on:click={() => toggleFilter('FilterParking')} class:inActive={filter && filter !== 'FilterParking'}><CarBrakeParking size={32} />Parking</button>
     <button on:click={() => toggleFilter('FilterRatings')} class:inActive={filter && filter !== 'FilterRatings'}><StarShootingOutline size={32} />Ratings</button>
@@ -15,6 +16,7 @@
   import StarShootingOutline from "svelte-material-icons/StarShootingOutline.svelte";
   import CoffeeOutline from "svelte-material-icons/CoffeeOutline.svelte";
   import PriceFilter from "../lib/filters/PriceFilter.svelte";
+  import StarsFilter from "../lib/filters/StarsFilter.svelte";
   
   let filter = '';
   $: filterComponent = getFilterComponent(filter);
