@@ -1,6 +1,6 @@
 <script lang="ts">
   import Progress from '../lib/Progress.svelte';
-import HotelShortInfos from './HotelShortInfos.svelte';
+  import HotelShortInfos from './HotelShortInfos.svelte';
 
   export let hotel: IHotel;
 </script>

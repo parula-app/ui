@@ -1,10 +1,10 @@
 <hbox>
-  <NumberInput {value} min={1} max={99} icon={People} />
+  <NumberInput {value} min={1} max={99} icon={PeopleIcon} />
 </hbox>
 
 <script lang="ts">
   import { NumberInput } from '@svelteuidev/core';
-  import People from "svelte-material-icons/AccountMultiple.svelte";
+  import PeopleIcon from "../../icons/PersonIcon.svelte";
   
   export let value: number;
 </script>

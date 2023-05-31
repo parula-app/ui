@@ -9,6 +9,7 @@
   let stars = 3;
 
   $: starsIcon = getIcon(stars);
+  $: label = stars === 1 ? '1 Star' : `${stars} Stars`;
 
   function getIcon(stars) {
     if(stars === 5) return Stars5Icon;
@@ -22,7 +23,7 @@
 <FilterButton>
   <svelte:component slot="icon" this={starsIcon} size={32} /> 
   <svelte:fragment slot="label">
-    Stars
+    {label}
   </svelte:fragment>
   <hbox slot="settings">
       <button on:click={() => stars = 1} class:active={stars === 1}><Stars1Icon size={32} /> 1 Star</button>
