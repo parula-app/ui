@@ -1,6 +1,6 @@
 <vbox>
   <hbox>
-    <button on:click={() => toggleFilter('FilterPrice')} class:inActive={filter && filter !== 'FilterPrice'}><PiggyBankOutline size={32}/>Price</button>
+    <PriceFilter />
     <button on:click={() => toggleFilter('FilterStars')} class:inActive={filter && filter !== 'FilterStars'}><StarOutline size={32} />Stars</button>
     <button on:click={() => toggleFilter('FilterParking')} class:inActive={filter && filter !== 'FilterParking'}><CarBrakeParking size={32} />Parking</button>
     <button on:click={() => toggleFilter('FilterRatings')} class:inActive={filter && filter !== 'FilterRatings'}><StarShootingOutline size={32} />Ratings</button>
@@ -10,12 +10,11 @@
 </vbox>
 
 <script lang="ts">
-  import PiggyBankOutline from "svelte-material-icons/PiggyBankOutline.svelte";
   import StarOutline from "svelte-material-icons/StarOutline.svelte";
   import CarBrakeParking from "svelte-material-icons/CarBrakeParking.svelte";
   import StarShootingOutline from "svelte-material-icons/StarShootingOutline.svelte";
   import CoffeeOutline from "svelte-material-icons/CoffeeOutline.svelte";
-  import FilterPrice from "./FilterPrice.svelte";
+  import PriceFilter from "../lib/filters/PriceFilter.svelte";
   
   let filter = '';
   $: filterComponent = getFilterComponent(filter);
@@ -25,7 +24,6 @@
   }
 
   function getFilterComponent(filter: any) {
-    if(filter === 'FilterPrice') return FilterPrice;
     return null;
   }
 </script>
