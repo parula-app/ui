@@ -23,10 +23,11 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    z-index: 2;
   }
   :global(.dateInput input) {
     padding: 1rem !important;
-    border: none;
+    border: none !important;
   }
   :global(.dateInput input:focus) {
     position: relative;
