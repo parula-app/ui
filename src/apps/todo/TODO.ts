@@ -15,6 +15,7 @@ export class Task extends Observable {
   toggleDone() {
     this.done = !this.done;
     console.log(this.name, "is", this.done ? "done" : "not done");
+    this.notifyChanged(); // TODO
   }
 }
 
