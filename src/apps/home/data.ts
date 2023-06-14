@@ -1,10 +1,12 @@
 export const mockedData = [
+  /*
   {
     id: crypto.randomUUID(),
     src: "/assets/images/hotel.png",
     alt: "find hotel",
     prompt: "Can you help me find a nice hotel in Wiesbaden for tonight?",
   },
+  */
   {
     id: crypto.randomUUID(),
     src: "/assets/images/alarm.png",
