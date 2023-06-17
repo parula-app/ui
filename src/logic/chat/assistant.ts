@@ -1,5 +1,6 @@
 import { ArrayColl } from "svelte-collections";
-import { TODOList, Task } from "../../apps/todo/TODO";
+import { Task, TODOList } from "../../apps/todo/Task";
+import { allRecipes, loadRecipes } from "../../apps/recipe/RecipesDB";
 import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
 // import { Client } from 'pia/client/Client.js';
@@ -72,5 +73,26 @@ function parulaParser(question: string): { response: string, app: string, appArg
       };
     }
   }
+  if (lowercase.includes("cook") || lowercase.includes("meal")) {
+    let inPos = lowercase.indexOf("cook");
+    if (inPos < 0) {
+      inPos = lowercase.indexOf("meal");
+    }
+    let meal: string = inPos >= 0 ? words[inPos + 1] : null;
+    if (meal) {
+      let recipe = allRecipes.find(r => r.name.toLowerCase().includes(meal) || r.description.toLowerCase().includes(meal));
+      if (!recipe) {
+        return { response: "Sorry, I don't know how to prepare this meal.", app: null, appArgs: {} }
+      }
+      recipe = recipe.newPreparation(1);
+      return {
+        response: `How to prepare ${recipe.name}`, app: "recipe", appArgs: { recipe: recipe }
+      };
+    }
+  }
   return { response: "Why did you ask?", app: null, appArgs: {} }
+}
+
+export async function loadData() {
+  await loadRecipes();
 }

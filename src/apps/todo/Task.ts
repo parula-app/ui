@@ -3,9 +3,9 @@ import { ArrayColl } from "svelte-collections";
 
 export class Task extends Observable {
   @notifyPropertyChanged
-  done = false;
-  @notifyPropertyChanged
   name: string;
+  @notifyPropertyChanged
+  done = false;
 
   constructor(name: string) {
     super();

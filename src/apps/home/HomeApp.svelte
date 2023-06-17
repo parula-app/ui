@@ -14,10 +14,10 @@
 <script lang="ts">
   import MessageList from "../chat/MessageList.svelte";
   import Prompt from "../lib/Prompt.svelte";
-  import { messages, parula } from "../../logic/chat/assistant";
+  import { parula, messages, loadData } from "../../logic/chat/assistant";
   import { mockedData } from "./data";
   import { ParulaMessage } from "../../logic/chat/ParulaMessage";
-  import { onMount, tick } from "svelte";
+  import { onMount } from "svelte";
   import AppLoad from "../loader/AppLoad.svelte";
   import TitleBar from "./TitleBar.svelte";
 
@@ -30,6 +30,7 @@
   }
 
   onMount(async () => {
+    await loadData()
     if (messages.isEmpty) {
       addSamples();
     }

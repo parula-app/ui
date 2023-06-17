@@ -2,6 +2,8 @@
   <Clock />
 {:else if app == "todo"}
   <TODOList {args} />
+{:else if app == "recipe"}
+  <RecipeApp {args} />
 {:else if app == "sample"}
   <SampleCard {args} />
 {:else if app == "hotel"}
@@ -10,6 +12,7 @@
 <script lang="ts">
   import Clock from "../clock/Clock.svelte";
   import TODOList from "../todo/TODOList.svelte";
+  import RecipeApp from "../recipe/RecipeApp.svelte";
   import SampleCard from "../home/SampleCard.svelte";
   import HotelApp from "../hotel/HotelApp.svelte";
 

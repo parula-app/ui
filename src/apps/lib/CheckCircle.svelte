@@ -7,6 +7,8 @@
     {/if}
     {#if label}
       <hbox class="name">{label}</hbox>
+    {:else}
+      <slot name="label" />
     {/if}
   </hbox>
 

@@ -5,6 +5,6 @@
 </vbox>
 
 <script lang="ts">
-  import { TODOList } from "./TODO";
+  import { TODOList } from "./Task";
   import TaskDisplay from "./TaskDisplay.svelte";
 </script>

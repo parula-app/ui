@@ -3,58 +3,64 @@ export const mockedData = [
   {
     id: crypto.randomUUID(),
     src: "/assets/images/hotel.png",
-    alt: "find hotel",
+    alt: "Find hotel",
     prompt: "Can you help me find a nice hotel in Wiesbaden for tonight?",
   },
   */
   {
     id: crypto.randomUUID(),
     src: "/assets/images/alarm.png",
-    alt: "setup alarm clock",
+    alt: "Setup alarm clock",
     prompt: "Wake me up at 5am",
   },
   {
     id: crypto.randomUUID(),
     src: "/assets/images/appartments.png",
-    alt: "find appartments",
+    alt: "Find appartments",
     prompt:
       "Show me the two bedroom apartments for rent in London",
   },
   {
     id: crypto.randomUUID(),
     src: "/assets/images/reminder.png",
-    alt: "remind me",
+    alt: "Remind me",
     prompt: "Remind me to water the plants every Wednesday",
   },
   {
     id: crypto.randomUUID(),
     src: "/assets/images/shopping-clothes.png",
-    alt: "find clothes",
+    alt: "Find clothes",
     prompt: "I need some new socks",
   },
   {
     id: crypto.randomUUID(),
     src: "/assets/images/shopping-list.png",
-    alt: "setup shopping list",
+    alt: "Setup shopping list",
     prompt:
       "Add milk to my shopping list",
   },
   {
     id: crypto.randomUUID(),
     src: "/assets/images/shopping-phone.png",
-    alt: "find phone",
+    alt: "Find phone",
     prompt: "I'd like a nice new phone. But no more than 800 €",
   },
   {
     id: crypto.randomUUID(),
+    src: "/assets/images/plumber.png",
+    alt: "Find help",
+    prompt: "A plumber! RIGHT NOW!",
+  },
+  {
+    id: crypto.randomUUID(),
     src: "/assets/images/alarm.png",
-    alt: "clock",
+    alt: "Clock",
     prompt: "What time is it?",
   },
   {
     id: crypto.randomUUID(),
-    src: "/assets/images/plumber.png",
-    alt: "find help",
-    prompt: "A plumber! RIGHT NOW!",
+    src: "/assets/images/shopping-list.png",
+    alt: "Cooking",
+    prompt: "Show me how to cook apple pie",
   },
 ];

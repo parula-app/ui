@@ -3,7 +3,7 @@
 </hbox>
 
 <script lang="ts">
-  import type { Task } from "./TODO";
+  import type { Task } from "./Task";
   import CheckCircle from "../lib/CheckCircle.svelte";
 
 export let task: Task;
