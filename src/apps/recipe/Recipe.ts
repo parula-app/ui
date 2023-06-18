@@ -80,6 +80,8 @@ export class Ingredient extends Observable {
 export class CookingStep extends Observable {
   @notifyPropertyChanged
   description: string;
+  /** in seconds. Optional */
+  duration: number;
 
   /** Whether the cook is currently performing this step */
   ongoing = false;

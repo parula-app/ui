@@ -25,7 +25,9 @@
 </script>
 
 <style>
-  .name {
-    margin-left: 7px;
+  .check-button :global(svg) {
+    margin-right: 7px;
+    min-width: 24px;
+    min-height: 24px;
   }
 </style>

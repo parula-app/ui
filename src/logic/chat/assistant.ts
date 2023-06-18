@@ -71,6 +71,8 @@ function parulaParser(question: string): { response: string, app: string, appArg
       return {
         response: `I've added ${task} to your TODO list`, app: "todo", appArgs: { task: task }
       };
+    } else {
+      return { response: `This is on your TODO list:`, app: "todo", appArgs: {} };
     }
   }
   if (lowercase.includes("cook") || lowercase.includes("meal")) {
@@ -84,7 +86,7 @@ function parulaParser(question: string): { response: string, app: string, appArg
       if (!recipe) {
         return { response: "Sorry, I don't know how to prepare this meal.", app: null, appArgs: {} }
       }
-      recipe = recipe.newPreparation(1);
+      recipe = recipe.newPreparation(recipe.servings);
       return {
         response: `How to prepare ${recipe.name}`, app: "recipe", appArgs: { recipe: recipe }
       };
