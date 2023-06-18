@@ -3,6 +3,7 @@ import { Task, TODOList } from "../../apps/todo/Task";
 import { allRecipes, loadRecipes } from "../../apps/recipe/RecipesDB";
 import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
+import { getTime } from "../../utils/date";
 // import { Client } from 'pia/client/Client.js';
 
 export let messages = new ArrayColl<ParulaMessage>();
@@ -89,6 +90,14 @@ function parulaParser(question: string): { response: string, app: string, appArg
       recipe = recipe.newPreparation(recipe.servings);
       return {
         response: `How to prepare ${recipe.name}`, app: "recipe", appArgs: { recipe: recipe }
+      };
+    }
+  }
+  if (lowercase.includes("remind") || lowercase.includes("reminder")) {
+    let seconds = getTime(question.toLowerCase());
+    if (seconds) {
+      return {
+        response: `Setting timer for ${seconds / 60} minutes from now`, app: "timer", appArgs: { seconds: seconds }
       };
     }
   }

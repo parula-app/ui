@@ -1,5 +1,7 @@
 {#if app == "clock"}
   <Clock />
+{:else if app == "timer"}
+  <Timer totalSeconds={args.seconds} />
 {:else if app == "todo"}
   <TODOList {args} />
 {:else if app == "recipe"}
@@ -15,6 +17,7 @@
   import RecipeApp from "../recipe/RecipeApp.svelte";
   import SampleCard from "../home/SampleCard.svelte";
   import HotelApp from "../hotel/HotelApp.svelte";
+  import Timer from "../clock/Timer.svelte";
 
   export let app: string;
   export let args: { [prop in string]: any };
