@@ -1,4 +1,4 @@
-import { notifyPropertyChanged, Observable } from "../../utils/Observable";
+import { notifyPropertyChanged, notifySetterChanged, Observable } from "../../utils/Observable";
 import { ArrayColl } from "svelte-collections";
 
 export type URLString = string;
@@ -15,14 +15,28 @@ export class Recipe extends Observable {
   description: string;
   @notifyPropertyChanged
   ingredients = new ArrayColl<Ingredient>();
+  _servings: number;
+  @notifyPropertyChanged
+  steps = new ArrayColl<CookingStep>();
   /** How many people the ingredients amount will feed.
    * E.g. 2 slices of bread and 1 egg (ingredients) for 2 servings. 
    * The assumption is that the cook can multiply the ingredients
    * to feed more or less people. */
-  @notifyPropertyChanged
-  servings: number;
-  @notifyPropertyChanged
-  steps = new ArrayColl<CookingStep>();
+  get servings(): number {
+    return this._servings;
+  }
+  @notifySetterChanged
+  set servings(val: number) {
+    let oldServings = this._servings;
+    this._servings = val;
+    if (oldServings == undefined) {
+      return;
+    }
+    let multiplier = this._servings / oldServings;
+    for (let ingredient of this.ingredients) {
+      ingredient.amount *= multiplier;
+    }
+  }
 
   constructor(name: string) {
     super();
