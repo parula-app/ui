@@ -8,7 +8,7 @@
 {:else}
   <hbox class="dummy-button" />
 {/if}
-<span class="label">{step.description}</span>
+<span class="label" class:done={step.done}>{step.description}</span>
 
 <script lang="ts">
   import type { CookingStep } from "./Recipe";
@@ -45,6 +45,9 @@
 <style>
   .label {
     max-width: 40em;
+  }
+  .label.done {
+    opacity: 50%;
   }
   button {
     border: none;
