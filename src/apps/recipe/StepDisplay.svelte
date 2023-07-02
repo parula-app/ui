@@ -1,15 +1,14 @@
-<hbox class="step">
-  {#if step.duration && !step.done}
-    {#if !timerRunning}
-      <button on:click={startTimer}><Timer size={24} /></button>
-    {:else}
-      <button on:click={stopTimer}><TimerPlay size={24} /></button>
-    {/if}
+<CheckCircle bind:checked={step.done} />
+{#if step.duration && !step.done}
+  {#if !timerRunning}
+    <button on:click={startTimer}><Timer size={24} /></button>
   {:else}
-    <hbox class="dummy-button" />
+    <button on:click={stopTimer}><TimerPlay size={24} /></button>
   {/if}
-  <CheckCircle bind:checked={step.done} label={step.description} />
-</hbox>
+{:else}
+  <hbox class="dummy-button" />
+{/if}
+<span class="label">{step.description}</span>
 
 <script lang="ts">
   import type { CookingStep } from "./Recipe";
@@ -29,6 +28,7 @@
   function changedDone(_dummy: any) {
     if (step.done) {
       step.ongoing = false;
+      stopTimer();
     }
   }
 
@@ -43,16 +43,19 @@
 </script>
 
 <style>
-  .step {
-    align-items: start;
+  .label {
+    max-width: 40em;
   }
   button {
     border: none;
-    margin-right: 1em;
   }
   .dummy-button {
     width: 25px;
     padding: 2px;
-    margin-right: 1em;
+  }
+  button, .dummy-button {
+    margin-top: -1px;
+    margin-left: -4px;
+    margin-right: 4px;
   }
 </style>
