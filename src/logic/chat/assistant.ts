@@ -5,6 +5,7 @@ import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
 import { getTime } from "../../utils/date";
 // import { Client } from 'pia/client/Client.js';
+import { connect } from "./ContextListener";
 
 export let messages = new ArrayColl<ParulaMessage>();
 
@@ -39,6 +40,17 @@ class ParulaClient {
       answer.html = response;
       answer.app = app;
       answer.appArgs = appArgs;
+      messages.push(answer);
+    });
+
+    connect((contextJSON: any) => {
+      const answer = new ParulaMessage();
+      answer.contact = parula;
+      answer.outgoing = false;
+      answer.text = contextJSON.resultText;
+      answer.html = contextJSON.resultText;
+      answer.app = contextJSON.app;
+      answer.appArgs = contextJSON.args;
       messages.push(answer);
     });
   }
