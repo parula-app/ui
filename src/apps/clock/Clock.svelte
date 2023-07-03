@@ -6,6 +6,10 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
 
+  export let intent: string;
+  export let args: { [prop in string]: any };
+  export let results: { any };
+
   let hourMin = "";
   let seconds = "";
   function setTime() {

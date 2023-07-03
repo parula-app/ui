@@ -3,7 +3,9 @@
 </vbox>
 
 <script lang="ts">
-  export let args: { [prop in string]: any};
+  export let intent: string;
+  export let args: { [prop in string]: any };
+  export let results: { [prop in string]: any };
 </script>
 
 <style>

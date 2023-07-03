@@ -1,15 +1,15 @@
 {#if app == "clock"}
-  <Clock />
+  <Clock {intent} {args} {results} />
 {:else if app == "timer"}
-  <Timer totalSeconds={args.seconds} />
-{:else if app == "todo"}
-  <TODOList {args} />
+  <Timer {intent} {args} {results} />
+{:else if app == "todolist"}
+  <TODOList {intent} {args} {results} />
 {:else if app == "recipe"}
-  <RecipeApp {args} />
+  <RecipeApp {intent} {args} {results} />
 {:else if app == "sample"}
-  <SampleCard {args} />
+  <SampleCard {intent} {args} {results} />
 {:else if app == "hotel"}
-  <HotelApp {args} />
+  <HotelApp {intent} {args} {results} />
 {/if}
 <script lang="ts">
   import Clock from "../clock/Clock.svelte";
@@ -20,5 +20,7 @@
   import Timer from "../clock/Timer.svelte";
 
   export let app: string;
+  export let intent: string;
   export let args: { [prop in string]: any };
+  export let results: { any };
 </script>

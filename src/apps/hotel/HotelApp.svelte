@@ -12,7 +12,9 @@
   import CustomFilterBar from "./CustomFilterBar.svelte";
   import Results from "./Results.svelte";
 
+  export let intent: string;
   export let args: { [prop in string]: any };
+  export let results: { any };
 
   $: console.log("hotel", args);
 </script>

@@ -4,16 +4,20 @@
 </hbox>
 
 <script lang="ts">
-  /** time from which to start counting down.
-   * in seconds */
-  export let totalSeconds: number;
+  export let intent: string;
+  export let args: { [prop in string]: any };
+  export let results: { any };
 
-  $: totalSeconds && startTimer();
+  $: args && args.totalSeconds && startTimer(args.totalSeconds);
   let totalTime: Date;
   let startTime: Date;
   let finishTime: Date;
   let remainingTime: Date;
-  function startTimer() {
+  /**
+   * @param totalSeconds time from which to start counting down.
+   * in seconds
+   */
+   function startTimer(totalSeconds: number) {
     console.log("total seconds", totalSeconds);
     totalTime = new Date(0, 0, 0, 0, 0, totalSeconds, 0);
     startTime = new Date();

@@ -4,7 +4,7 @@
   </vbox>
   {#if fullScreen}
     <TitleBar appName={lastMessage.app} on:close={() => fullScreen = false} />
-    <AppLoad app={lastMessage.app} args={lastMessage.appArgs} />
+    <AppLoad app={lastMessage.app} intent={lastMessage.intent} args={lastMessage.appArgs} results={lastMessage.results} />
   {/if}
   <div class="prompt">
     <Prompt />

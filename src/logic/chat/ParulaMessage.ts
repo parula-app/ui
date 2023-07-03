@@ -1,12 +1,15 @@
 import { Message } from "../abstract/Message";
 
 export class ParulaMessage extends Message {
-  /** The intent from the IntentParser.
+  /** The app ID/name from the IntentParser.
    * May be null. */
   app: string;
+  /** The intent ID/name from the IntentParser.
+   * May be null. */
+  intent: string;
   /** The intent specific arguments from the IntentParser */
   appArgs: { [prop in string]: any };
-  results: { [prop in string]: any };
+  results: { any };
 
   constructor() {
     super();

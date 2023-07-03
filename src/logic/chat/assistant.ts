@@ -28,7 +28,7 @@ class ParulaClient {
       if (!question || question.contact != parula || !question.outgoing) {
         return;
       }
-      const { response, app, appArgs } = nillyWillyParser(question.text);
+      const { response, app, appArgs, results } = nillyWillyParser(question.text);
       // TODO replace with Pia NLP
       // let { intent, args } = await this.intentParser.match(question.text);
       // return await this.intentParser.startIntent(intent, args);
@@ -39,6 +39,7 @@ class ParulaClient {
       answer.html = response;
       answer.app = app;
       answer.appArgs = appArgs;
+      answer.results = results;
       messages.push(answer);
     });
 
@@ -50,7 +51,7 @@ class ParulaClient {
       answer.html = contextJSON.resultText;
       answer.app = contextJSON.app;
       answer.appArgs = contextJSON.args;
-      answer.results = contextJSON.results;
+      answer.results = contextJSON.results?.slice().pop(); // last result only, for now
       messages.push(answer);
     });
   }

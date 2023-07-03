@@ -26,7 +26,7 @@
     <hbox class="text">{@html message.html }</hbox>
     {#if message.app}
       <vbox class="app">
-        <AppLoad app={message.app} args={message.appArgs} />
+        <AppLoad app={message.app} intent={message.intent} args={message.appArgs} results={message.results} />
       </vbox>
     {/if}
   </vbox>

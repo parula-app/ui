@@ -15,7 +15,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-  export const appName = "";
+  export const appName: string = "";
 
   function onClose() {
 		dispatch('close', {});
