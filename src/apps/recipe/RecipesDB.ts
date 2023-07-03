@@ -8,6 +8,7 @@ export const allRecipes = new ArrayColl<Recipe>();
 
 /** Takes 160 ms for 7000 recipes */
 export async function loadRecipes(): Promise<ArrayColl<Recipe>> {
+  console.time("Loading recipes");
   const response = await axios.get("data/recipes.csv");
   const json = await csvParser().fromString(response.data);
   for (let fields of json) {
@@ -33,7 +34,7 @@ export async function loadRecipes(): Promise<ArrayColl<Recipe>> {
       for (let stepStr of stepsStrs) {
         let step = new CookingStep();
         step.description = stepStr;
-        parseStep(step);
+        step.duration = getTime(step.description);
         recipe.steps.add(step);
       }
       let pic = fields.img_src;
@@ -47,9 +48,6 @@ export async function loadRecipes(): Promise<ArrayColl<Recipe>> {
       console.error(ex);
     }
   }
+  console.timeEnd("Loading recipes");
   return allRecipes;
 };
-
-function parseStep(step: CookingStep) {
-  step.duration = getTime(step.description);
-}
