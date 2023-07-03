@@ -14,8 +14,7 @@
   $: tasks = context?.results as unknown as string[];
   $: setResults(tasks);
   function setResults(_dummy: any) {
-    console.log("todo list contained", TODOList.join(", "));
-    console.log("TODO tasks", tasks, context?.results);
+    console.log("todo list contained", TODOList.join(", "), "TODO tasks", tasks);
     TODOList.clear();
     for (let task of tasks) {
       TODOList.add(new Task(task));

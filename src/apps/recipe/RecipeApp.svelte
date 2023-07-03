@@ -10,5 +10,4 @@
   export let context: Context;
 
   $: recipe = context?.results as unknown as Recipe;
-  $: console.log("recipe", recipe);
 </script>

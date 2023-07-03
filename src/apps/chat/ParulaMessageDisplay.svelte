@@ -15,7 +15,6 @@
   export let message: ChatMessage;
   export let previousMessage: ChatMessage = null;
   $: parulaMessage = message instanceof ParulaMessage ? message : null; 
-  $: console.log("parula message", parulaMessage, "app", parulaMessage.context?.app);
 </script>
 
 <style>
