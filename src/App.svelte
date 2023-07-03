@@ -22,7 +22,7 @@
 	import { Router, Link, Route } from "svelte-navigator";
 	import Home from "./apps/home/HomeApp.svelte";
 	import Hotel from "./apps/hotel/HotelApp.svelte";
-	import HotelDetails from "./apps/hotelDetails/HotelDetailsApp.svelte";
+	import HotelDetails from "./apps/hotel/details/HotelDetailsApp.svelte";
 	import Clock from "./apps/clock/Clock.svelte";
 </script>
 
