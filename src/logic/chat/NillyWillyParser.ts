@@ -45,7 +45,7 @@ export function nillyWillyParser(question: string): Context {
     }
     let meal: string = inPos >= 0 ? words[inPos + 1] : null;
     if (meal) {
-      let recipe = allRecipes.find(r => r.name.toLowerCase().includes(meal) || r.description.toLowerCase().includes(meal));
+      let recipe = allRecipes.find(r => r.name.toLowerCase().includes(meal) || r.description?.toLowerCase().includes(meal));
       context.app = "recipe";
       if (!recipe) {
         context.resultText = "Sorry, I don't know how to prepare this meal.";
