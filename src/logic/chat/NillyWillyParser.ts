@@ -10,6 +10,7 @@ export function nillyWillyParser(question: string): Context {
   let context = new Context();
   if (lowercase.includes("time")) {
     context.app = "clock";
+    context.resultText = "";
     return context;
   }
   if (lowercase.includes("hotel") || lowercase.includes("hotels")) {
