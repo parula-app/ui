@@ -46,12 +46,12 @@ export function nillyWillyParser(question: string): Context {
     let meal: string = inPos >= 0 ? words[inPos + 1] : null;
     if (meal) {
       let recipe = allRecipes.find(r => r.name.toLowerCase().includes(meal) || r.description?.toLowerCase().includes(meal));
-      context.app = "recipe";
       if (!recipe) {
         context.resultText = "Sorry, I don't know how to prepare this meal.";
         return context;
       }
       recipe = recipe.newPreparation(recipe.servings);
+      context.app = "recipe";
       context.results = recipe;
       context.resultText = `How to prepare ${recipe.name}`;
       return context;
@@ -59,12 +59,12 @@ export function nillyWillyParser(question: string): Context {
   }
   if (lowercase.includes("remind") || lowercase.includes("reminder")) {
     let seconds = getTime(question.toLowerCase());
-    context.app = "timer";
     if (seconds) {
+      context.app = "timer";
       context.resultText = `Setting timer for ${seconds / 60} minutes from now`;
       context.args = { seconds: seconds };
+      return context;
     };
-    return context;
   }
   context.resultText = "Why did you ask?";
   return context;
