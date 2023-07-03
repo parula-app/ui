@@ -7,16 +7,15 @@
 <script lang="ts">
   import { TODOList, Task } from "./Task";
   import TaskDisplay from "./TaskDisplay.svelte";
+  import type { Context } from "../../logic/chat/Context";
 
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  export let context: Context;
 
-  $: tasks = results as unknown as string[];
+  $: tasks = context?.results as unknown as string[];
   $: setResults(tasks);
   function setResults(_dummy: any) {
     console.log("todo list contained", TODOList.join(", "));
-    console.log("TODO tasks", tasks, results);
+    console.log("TODO tasks", tasks, context?.results);
     TODOList.clear();
     for (let task of tasks) {
       TODOList.add(new Task(task));

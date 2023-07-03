@@ -4,11 +4,11 @@
 </hbox>
 
 <script lang="ts">
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  import type { Context } from "../../logic/chat/Context";
 
-  $: args && args.totalSeconds && startTimer(args.totalSeconds);
+export let context: Context;
+
+  $: context?.args?.totalSeconds && startTimer(context.args.totalSeconds);
   let totalTime: Date;
   let startTime: Date;
   let finishTime: Date;

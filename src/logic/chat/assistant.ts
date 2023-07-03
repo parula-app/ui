@@ -5,6 +5,7 @@ import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
 import { connect } from "./ContextListener";
 import { nillyWillyParser } from "./NillyWillyParser";
+import { Context } from "./Context";
 
 export let messages = new ArrayColl<ParulaMessage>();
 
@@ -28,30 +29,26 @@ class ParulaClient {
       if (!question || question.contact != parula || !question.outgoing) {
         return;
       }
-      const { response, app, appArgs, results } = nillyWillyParser(question.text);
+      const context = nillyWillyParser(question.text);
       // TODO replace with Pia NLP
       // let { intent, args } = await this.intentParser.match(question.text);
       // return await this.intentParser.startIntent(intent, args);
       const answer = new ParulaMessage();
       answer.contact = parula;
       answer.outgoing = false;
-      answer.text = response;
-      answer.html = response;
-      answer.app = app;
-      answer.appArgs = appArgs;
-      answer.results = results;
+      answer.text = context.resultText;
+      answer.html = context.resultText;
+      answer.context = context;
       messages.push(answer);
     });
 
-    connect((contextJSON: any) => {
+    connect((context: Context) => {
       const answer = new ParulaMessage();
       answer.contact = parula;
       answer.outgoing = false;
-      answer.text = contextJSON.resultText;
-      answer.html = contextJSON.resultText;
-      answer.app = contextJSON.app;
-      answer.appArgs = contextJSON.args;
-      answer.results = contextJSON.results?.slice().pop(); // last result only, for now
+      answer.text = context.resultText;
+      answer.html = context.resultText;
+      answer.context = context;
       messages.push(answer);
     });
   }

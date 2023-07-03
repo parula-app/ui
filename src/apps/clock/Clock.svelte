@@ -5,10 +5,9 @@
 
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
+  import type { Context } from "../../logic/chat/Context";
 
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  export let context: Context;
 
   let hourMin = "";
   let seconds = "";

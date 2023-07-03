@@ -11,12 +11,11 @@
   import MainFilterBar from "./MainFilterBar.svelte";
   import CustomFilterBar from "./CustomFilterBar.svelte";
   import Results from "./Results.svelte";
+  import type { Context } from "../../logic/chat/Context";
 
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  export let context: Context;
 
-  $: console.log("hotel", args);
+  $: console.log("hotel", context?.args);
 </script>
 
 <style>

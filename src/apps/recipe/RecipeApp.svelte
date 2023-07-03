@@ -5,11 +5,10 @@
 <script lang="ts">
   import { Recipe } from "./Recipe";
   import RecipeDisplay from "./RecipeDisplay.svelte";
+  import type { Context } from "../../logic/chat/Context";
 
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  export let context: Context;
 
-  $: recipe = results as unknown as Recipe;
+  $: recipe = context?.results as unknown as Recipe;
   $: console.log("recipe", recipe);
 </script>

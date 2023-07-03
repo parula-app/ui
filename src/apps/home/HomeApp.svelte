@@ -3,8 +3,8 @@
     <MessageList {messages} />
   </vbox>
   {#if fullScreen}
-    <TitleBar appName={lastMessage.app} on:close={() => fullScreen = false} />
-    <AppLoad app={lastMessage.app} intent={lastMessage.intent} args={lastMessage.appArgs} results={lastMessage.results} />
+    <TitleBar appName={context.app} on:close={() => fullScreen = false} />
+    <AppLoad {context} />
   {/if}
   <div class="prompt">
     <Prompt />
@@ -20,13 +20,15 @@
   import { onMount } from "svelte";
   import AppLoad from "../loader/AppLoad.svelte";
   import TitleBar from "./TitleBar.svelte";
+  import { Context } from "../../logic/chat/Context";
 
   $: lastMessage = $messages.get(messages.length - 1);
+  $: context = lastMessage?.context;
 
   let fullScreen = false;
   $: startFullScreen(lastMessage);
   function startFullScreen(message: ParulaMessage) {
-    fullScreen = !!(message?.app);
+    fullScreen = !!(message?.context?.app) && !!(message?.context?.results);
   }
 
   onMount(async () => {
@@ -39,8 +41,10 @@
   function addSamples() {
     for (let sample of mockedData) {
       const message = new ParulaMessage();
-      message.app = "sample";
-      message.appArgs = sample;
+      message.context = new Context();
+      message.context.app = "sample";
+      message.context.args = sample;
+      message.context.resultText = sample.prompt;
       message.text = sample.prompt;
       message.html = sample.prompt;
       message.contact = parula;

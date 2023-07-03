@@ -1,3 +1,4 @@
+import { Context } from "./Context";
 
 let wsConnection;
 
@@ -6,7 +7,7 @@ let wsConnection;
  *
  * @param onMessage Called once a new context is received from Parula core.
  */
-export function connect(onMessage: (contextJSON: any) => void) {
+export function connect(onContextChange: (context: Context) => void) {
   try {
     const port = 12779;
     let ws = new WebSocket(`ws://${window.location.hostname}:${port}`);
@@ -19,7 +20,7 @@ export function connect(onMessage: (contextJSON: any) => void) {
       try {
         console.log("event", event, "data", event.data);
         let json = JSON.parse(event.data);
-        onMessage(json);
+        onContextChange(Context.fromJSON(json));
       } catch (ex) {
         console.error(ex);
       }

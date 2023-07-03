@@ -1,15 +1,15 @@
 <vbox class="messages">
   <Scroll bind:this={scroller}>
     {#each $sortedMessages.each as message, i}
-      <MessageDisplay {message} previousMessage={sortedMessages.getIndex(i - 1)} />
+      <ParulaMessageDisplay {message} previousMessage={sortedMessages.getIndex(i - 1)} />
     {/each}
   </Scroll>
 </vbox>
 
 <script lang="ts">
   import type { Collection } from "svelte-collections";
-  import type { ChatMessage } from "../../logic/chat/Message";
-  import MessageDisplay from "./ParulaMessageDisplay.svelte";
+  import type { ChatMessage } from "../../logic/chat/ChatMessage";
+  import ParulaMessageDisplay from "./ParulaMessageDisplay.svelte";
   import Scroll from "../lib/Scroll.svelte";
   import { tick } from "svelte";
 

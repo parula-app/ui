@@ -1,15 +1,15 @@
-{#if app == "clock"}
-  <Clock {intent} {args} {results} />
-{:else if app == "timer"}
-  <Timer {intent} {args} {results} />
-{:else if app == "todolist"}
-  <TODOList {intent} {args} {results} />
-{:else if app == "recipe"}
-  <RecipeApp {intent} {args} {results} />
-{:else if app == "sample"}
-  <SampleCard {intent} {args} {results} />
-{:else if app == "hotel"}
-  <HotelApp {intent} {args} {results} />
+{#if context?.app == "clock"}
+  <Clock {context} />
+{:else if context?.app == "timer"}
+  <Timer {context} />
+{:else if context?.app == "todolist"}
+  <TODOList {context} />
+{:else if context?.app == "recipe"}
+  <RecipeApp {context} />
+{:else if context?.app == "sample"}
+  <SampleCard {context} />
+{:else if context?.app == "hotel"}
+  <HotelApp {context} />
 {/if}
 <script lang="ts">
   import Clock from "../clock/Clock.svelte";
@@ -18,9 +18,7 @@
   import SampleCard from "../home/SampleCard.svelte";
   import HotelApp from "../hotel/HotelApp.svelte";
   import Timer from "../clock/Timer.svelte";
+  import type { Context } from "../../logic/chat/Context";
 
-  export let app: string;
-  export let intent: string;
-  export let args: { [prop in string]: any };
-  export let results: { any };
+  export let context: Context;
 </script>
