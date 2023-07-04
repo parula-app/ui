@@ -1,11 +1,11 @@
 import { ArrayColl } from "svelte-collections";
-import { Task, TODOList } from "../../apps/todo/Task";
-import { allRecipes, loadRecipes } from "../../apps/recipe/RecipesDB";
+import { loadRecipes } from "../../apps/recipe/RecipesDB";
 import { Person } from "../abstract/Person";
 import { ParulaMessage } from "./ParulaMessage";
 import { connect } from "./ContextListener";
 import { nillyWillyParser } from "./NillyWillyParser";
 import { Context } from "./Context";
+import axios from "axios";
 
 export let messages = new ArrayColl<ParulaMessage>();
 
@@ -29,16 +29,24 @@ class ParulaClient {
       if (!question || question.contact != parula || !question.outgoing) {
         return;
       }
-      const context = nillyWillyParser(question.text);
-      // TODO replace with Pia NLP
-      // let { intent, args } = await this.intentParser.match(question.text);
-      // return await this.intentParser.startIntent(intent, args);
       const answer = new ParulaMessage();
       answer.contact = parula;
       answer.outgoing = false;
-      answer.text = context.resultText;
-      answer.html = context.resultText;
+
+      const context = nillyWillyParser(question.text);
+      answer.html = answer.text = context.resultText;
       answer.context = context;
+
+      /*
+      try {
+        const context = await askParula(question.text);
+        answer.html = answer.text = context.resultText;
+        answer.context = context;
+      } catch (ex) {
+        console.error(ex);
+        answer.html = answer.text = ex.message;
+      }
+      */
       messages.push(answer);
     });
 
@@ -59,4 +67,20 @@ export const parulaClient = new ParulaClient();
 
 export async function loadData() {
   await loadRecipes();
+}
+
+async function askParula(question: string): Promise<Context> {
+  let queryJSON = {
+    question: question,
+  };
+  const kPort = 12777;
+  let queryResponse = await axios.put(`${window.location.protocol}//${window.location.hostname}:${kPort}/assistant/text`, queryJSON);
+  let contextJSON = JSON.parse(queryResponse.data);
+  if (contextJSON.errorMessage) {
+    let ex = new Error(contextJSON.errorMessage);
+    ex.code = contextJSON.errorCode;
+    throw ex;
+  }
+  console.log("context JSON", contextJSON);
+  return Context.fromJSON(contextJSON);
 }
