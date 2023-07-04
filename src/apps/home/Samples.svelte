@@ -5,6 +5,11 @@
 </grid>
 
 <script lang="ts">
+  /* This component is not currently used.
+  Instead, HomeApp addSamples() adds the samples as chat messages,
+  which then indirectly (va MessageList -> ParulaMessageDisplay -> AppLoad)
+  goes to SampleCard */
+
   import SampleCard from "./SampleCard.svelte";
 
   import { mockedData } from "./data";
