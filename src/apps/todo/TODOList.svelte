@@ -12,8 +12,8 @@
   export let context: Context;
 
   $: tasks = context?.results as unknown as string[];
-  $: setResults(tasks);
-  function setResults(_dummy: any) {
+  $: tasks && setResults();
+  function setResults() {
     console.log("todo list contained", TODOList.join(", "), "TODO tasks", tasks);
     TODOList.clear();
     for (let task of tasks) {
